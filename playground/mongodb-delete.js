@@ -21,10 +21,10 @@ MongoClient.connect('mongodb://localhost:27017/TodosApp', (err, db) => {
     //         console.log(result)
     //     })
 
-    db.collection('Users').findOneAndDelete({
-            _id: new ObjectID('5c34b7035d3c9012e4ba6ae4')
-        }).then((result) => {
-            console.log(JSON.stringify(result, undefined, 2))
-        })
-        //db.close()
+    // db.collection('Users').findOneAndDelete({
+    //         _id: new ObjectID('5c34b7035d3c9012e4ba6ae4')
+    //     }).then((result) => {
+    //         console.log(JSON.stringify(result, undefined, 2))
+    //     })
+    //db.close()
 })
