@@ -29,7 +29,7 @@ const { User } = require('./../server/modules/user')
 //     console.log(e)
 // })
 
-var id = '6c3717e6b7b4ef162029b049'
+var id = '5c3717e6b7b4ef162029b049'
 
 User.find({
     _id: id
