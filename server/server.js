@@ -25,19 +25,11 @@ app.post('/todos', (req, res) => {
     });
 })
 
-// app.get('/todos', (res, req) => {
-//     Todo.find().then((todos) => {
-//         res.send({ todos })
-//     }, (err) => {
-//         res.status(400).send(err)
-//     })
-// })
-
 app.get('/todos', (req, res) => {
     Todo.find().then((todos) => {
         res.send({ todos })
     }).catch((err) => {
-        res.status(400).send({ todos })
+        res.status(400).send(err)
     });
 })
 
@@ -58,6 +50,23 @@ app.get('/todos/:id', (req, res) => {
     });
 })
 
+app.delete('/todos/:id', (req, res) => {
+    var id = req.params.id
+
+    if (!ObjectID.isValid(id)) {
+        return res.status(404).send('ID not valid')
+    }
+
+    Todo.findByIdAndDelete(id).then((todo) => {
+        if (!todo) {
+            return res.status(404).send()
+        }
+        console.log({ todo })
+        res.status(200).send({ todo })
+    }).catch((err) => {
+        res.status(400).send()
+    })
+})
 app.listen(port, () => {
     console.log(`Started on port ${port}`);
 })
